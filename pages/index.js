@@ -9,7 +9,14 @@ const Home = () => {
   return (
     <React.Fragment>
       <Head>
-        <title>Calculator</title>
+        <title>calculator</title>
+        <meta name="language" content="EN" />
+        <meta name="description" content="nextjs calculator" />
+        <meta
+          name="keywords"
+          content="calculator nextjs js react advanced online-calculator"
+        />
+        <meta name="robots" content="index, follow" />
       </Head>
       <div className="home__container">
         <div className="home__header">
