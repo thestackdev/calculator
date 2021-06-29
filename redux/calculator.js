@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import commaNumber from 'comma-number'
 
 const calculator = createSlice({
   name: 'calculator',
@@ -26,7 +27,9 @@ const calculator = createSlice({
           .replaceAll(' ', '')
           .replaceAll('✕', '*')
           .replaceAll('÷', '/')
-        state.output = eval(exp.replace(/(\d+)!/g, (m, n) => fact(+n)))
+        state.output = commaNumber(
+          eval(exp.replace(/(\d+)!/g, (m, n) => fact(+n)))
+        )
       } catch (error) {
         state.output = ''
         if (val === '=') state.input = ''
