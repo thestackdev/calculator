@@ -1,10 +1,25 @@
-import Button from 'components/Button'
 import Head from 'next/head'
-import { useSelector } from 'react-redux'
-import React from 'react'
+import React, { useContext } from 'react'
+import * as Context from 'context/calculator'
 
 const Home = () => {
-  const state = useSelector((state) => state)
+  const [state, dispatch] = useContext(Context.Context)
+
+  const handleClear = () => {
+    dispatch({ type: Context.Actions.CLEAR })
+  }
+
+  const handleExp = (e) => {
+    dispatch({ type: Context.Actions.EXPRESSION, payload: e.target.innerHTML })
+  }
+
+  const handleDelete = () => {
+    dispatch({ type: Context.Actions.DELETE })
+  }
+
+  const handleEquals = () => {
+    dispatch({ type: Context.Actions.EQUALS })
+  }
 
   return (
     <React.Fragment>
@@ -24,26 +39,38 @@ const Home = () => {
           <div className="home__input">{state.input}</div>
         </div>
         <div className="home__body">
-          <Button text="AC" />
-          <Button text="&#8592;" />
-          <Button text="%" textcolor="#f54c4c" />
-          <Button text="÷" textcolor="#f54c4c" />
-          <Button text={7} />
-          <Button text={8} />
-          <Button text={9} />
-          <Button text="✕" textcolor="#f54c4c" />
-          <Button text={4} />
-          <Button text={5} />
-          <Button text={6} />
-          <Button text="-" textcolor="#f54c4c" />
-          <Button text={1} />
-          <Button text={2} />
-          <Button text={3} />
-          <Button text="!" textcolor="#f54c4c" />
-          <Button text={0} />
-          <Button text="." textcolor="#f54c4c" />
-          <Button text="+" textcolor="#f54c4c" />
-          <Button text="=" textcolor="#fff" />
+          <div onClick={handleClear}>AC</div>
+          <div onClick={handleDelete}>&#8592;</div>
+          <div className="button__symbol" onClick={handleExp}>
+            %
+          </div>
+          <div className="button__symbol" onClick={handleExp}>
+            ÷
+          </div>
+          <div onClick={handleExp}>7</div>
+          <div onClick={handleExp}>8</div>
+          <div onClick={handleExp}>9</div>
+          <div className="button__symbol" onClick={handleExp}>
+            ✕
+          </div>
+          <div onClick={handleExp}>4</div>
+          <div onClick={handleExp}>5</div>
+          <div onClick={handleExp}>6</div>
+          <div className="button__symbol" onClick={handleExp}>
+            -
+          </div>
+          <div onClick={handleExp}>1</div>
+          <div onClick={handleExp}>2</div>
+          <div onClick={handleExp}>3</div>
+          <div className="button__symbol" onClick={handleExp}>
+            !
+          </div>
+          <div onClick={handleExp}>0</div>
+          <div onClick={handleExp}>.</div>
+          <div className="button__symbol" onClick={handleExp}>
+            +
+          </div>
+          <div onClick={handleEquals}>=</div>
         </div>
       </div>
     </React.Fragment>

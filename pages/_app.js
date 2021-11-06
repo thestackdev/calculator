@@ -1,12 +1,10 @@
-import { Provider } from 'react-redux'
-import store from 'redux/store'
+import { Provider } from 'context/calculator'
 import 'styles/globals.css'
-import 'styles/button.css'
 import 'styles/home.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
+    <Provider>
       <Component {...pageProps} />
     </Provider>
   )
